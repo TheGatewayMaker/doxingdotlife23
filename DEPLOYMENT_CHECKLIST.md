@@ -23,23 +23,25 @@ This checklist guides you through deploying the enhanced application to Netlify 
 ## Step 2: Set Up Netlify Environment Variables
 
 ### Option A: Using Netlify UI
+
 1. Log in to [Netlify Dashboard](https://app.netlify.com)
 2. Select your "Doxing Dot Life" site
 3. Go to **Site settings** → **Build & deploy** → **Environment**
 4. Click **Edit variables**
 5. Add these environment variables:
 
-   | Variable Name | Value |
-   |---|---|
-   | `R2_ACCOUNT_ID` | Your Cloudflare Account ID |
-   | `R2_ACCESS_KEY_ID` | Your R2 API Access Key ID |
-   | `R2_SECRET_ACCESS_KEY` | Your R2 API Secret Access Key |
-   | `R2_BUCKET_NAME` | Your bucket name (e.g., `doxing-dot-life`) |
-   | `R2_PUBLIC_URL` | (Optional) Your public URL if configured |
+   | Variable Name          | Value                                      |
+   | ---------------------- | ------------------------------------------ |
+   | `R2_ACCOUNT_ID`        | Your Cloudflare Account ID                 |
+   | `R2_ACCESS_KEY_ID`     | Your R2 API Access Key ID                  |
+   | `R2_SECRET_ACCESS_KEY` | Your R2 API Secret Access Key              |
+   | `R2_BUCKET_NAME`       | Your bucket name (e.g., `doxing-dot-life`) |
+   | `R2_PUBLIC_URL`        | (Optional) Your public URL if configured   |
 
 6. Click **Save**
 
 ### Option B: Using Netlify CLI
+
 ```bash
 netlify env:set R2_ACCOUNT_ID "your_account_id"
 netlify env:set R2_ACCESS_KEY_ID "your_access_key_id"
@@ -73,6 +75,7 @@ netlify env:set R2_PUBLIC_URL "your_public_url" # Optional
 ## Step 5: Test Media Features
 
 ### Image Lightbox
+
 - [ ] Click an image in the post detail page
 - [ ] Image opens in fullscreen modal
 - [ ] Can navigate with arrow buttons
@@ -81,6 +84,7 @@ netlify env:set R2_PUBLIC_URL "your_public_url" # Optional
 - [ ] Clicking outside closes the modal
 
 ### Video Fullscreen
+
 - [ ] Click fullscreen icon on video player
 - [ ] Video enters fullscreen mode
 - [ ] All video controls work (play, pause, volume, progress)
@@ -88,6 +92,7 @@ netlify env:set R2_PUBLIC_URL "your_public_url" # Optional
 - [ ] Video thumbnail appears in grid
 
 ### Media Gallery
+
 - [ ] All media types show appropriate icons (images, videos, audio)
 - [ ] Can click any thumbnail to view in preview
 - [ ] Navigation arrows work smoothly
@@ -97,23 +102,27 @@ netlify env:set R2_PUBLIC_URL "your_public_url" # Optional
 ## Troubleshooting
 
 ### Issue: "No Posts Found" after deployment
+
 - [ ] Check environment variables are set in Netlify (not in .env)
 - [ ] Redeploy after setting variables
 - [ ] Check that R2_BUCKET_NAME matches the actual bucket name
 
 ### Issue: Media uploads but doesn't display
+
 - [ ] Verify R2_PUBLIC_URL is correct (if set)
 - [ ] Check R2 bucket has public read access (if needed)
 - [ ] Verify the media URL in browser DevTools
 - [ ] Check R2 bucket in Cloudflare dashboard for uploaded files
 
 ### Issue: Video doesn't play
+
 - [ ] Check video format is supported (MP4, WebM, MOV, AVI, MKV, etc.)
 - [ ] Verify video file uploaded correctly to R2
 - [ ] Test with a smaller/different video file
 - [ ] Check browser console for CORS errors
 
 ### Issue: Upload fails with permission error
+
 - [ ] Verify R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY are correct
 - [ ] Check API token has Write and Delete permissions
 - [ ] Verify token hasn't expired
@@ -122,6 +131,7 @@ netlify env:set R2_PUBLIC_URL "your_public_url" # Optional
 ## Features Overview
 
 ### New Media Viewer Component
+
 - ✅ Image lightbox with fullscreen support
 - ✅ Video player with fullscreen capability
 - ✅ Audio player with controls
@@ -131,6 +141,7 @@ netlify env:set R2_PUBLIC_URL "your_public_url" # Optional
 - ✅ Support for all common media types
 
 ### Supported Media Types
+
 - **Images**: JPG, PNG, WebP, GIF, SVG, BMP, TIFF, ICO
 - **Videos**: MP4, WebM, MOV, AVI, MKV, FLV, M4V, MPEG, WMV, OGV
 - **Audio**: MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, WMA, AIFF
@@ -153,6 +164,7 @@ netlify env:set R2_PUBLIC_URL "your_public_url" # Optional
 ## Documentation
 
 For more detailed information, see:
+
 - [NETLIFY_SETUP.md](./NETLIFY_SETUP.md) - Complete R2 setup guide
 - [.env.example](./.env.example) - Environment variable template
 - [AGENTS.md](./AGENTS.md) - Project architecture overview

@@ -7,11 +7,13 @@ This guide explains how to configure Cloudflare R2 storage for your Doxing Dot L
 You need to set the following environment variables in your Netlify deployment:
 
 ### 1. R2 Credentials
+
 - **R2_ACCESS_KEY_ID**: Your Cloudflare R2 access key ID
 - **R2_SECRET_ACCESS_KEY**: Your Cloudflare R2 secret access key
 - **R2_ACCOUNT_ID**: Your Cloudflare Account ID
 
 ### 2. R2 Bucket Configuration
+
 - **R2_BUCKET_NAME**: The name of your R2 bucket (e.g., `doxing-dot-life`)
 - **R2_PUBLIC_URL**: (Optional) The public URL for accessing files. If set, media files will be served through this URL. Otherwise, a default URL is constructed from your account ID and bucket name.
 
@@ -76,16 +78,19 @@ After deploying with the environment variables:
 ## Troubleshooting
 
 ### "Missing required R2 environment variables"
+
 - Verify all required variables are set in Netlify
 - Make sure the variable names match exactly (case-sensitive)
 - Redeploy your site after adding variables
 
 ### "Media files not loading"
+
 - Check if the R2_PUBLIC_URL is correct
 - Verify the bucket has public read access enabled
 - Check the R2 bucket policy allows reading objects
 
 ### "Upload fails with permission error"
+
 - Verify the API token has Write and Delete permissions
 - Check that the bucket exists and is accessible
 - Ensure the R2_ACCOUNT_ID is correct
@@ -95,15 +100,19 @@ After deploying with the environment variables:
 The application now supports all common media types:
 
 ### Images
+
 - JPEG, PNG, WebP, GIF, SVG, BMP, TIFF, ICO
 
 ### Videos
+
 - MP4, WebM, MOV, AVI, MKV, FLV, M4V, MPEG, WMV, OGV
 
 ### Audio
+
 - MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, WMA, AIFF
 
 ### Features
+
 - **Image Lightbox**: Click on images to view them in fullscreen
 - **Video Fullscreen**: Click the fullscreen button to watch videos in full resolution
 - **Media Gallery**: Thumbnail grid to navigate through all media files

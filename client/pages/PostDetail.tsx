@@ -157,7 +157,10 @@ export default function PostDetail() {
 
               {/* Media */}
               {post.mediaFiles && post.mediaFiles.length > 0 && (
-                <MediaViewer mediaFiles={post.mediaFiles} postTitle={post.title} />
+                <MediaViewer
+                  mediaFiles={post.mediaFiles}
+                  postTitle={post.title}
+                />
               )}
 
               {/* Share Button */}
