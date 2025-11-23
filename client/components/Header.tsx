@@ -72,12 +72,29 @@ export default function Header() {
           >
             🔍 Dox Anyone
           </Link>
-          <Link
-            to="/admin-panel"
-            className="flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-accent transition-colors"
-          >
-            ⚙️ Admin
-          </Link>
+          {isAuthenticated && (
+            <>
+              <Link
+                to="/uppostpanel"
+                className="flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-accent transition-colors"
+              >
+                📤 Upload
+              </Link>
+              <Link
+                to="/admin-panel"
+                className="flex items-center gap-2 px-4 py-2 bg-amber-500/10 text-amber-500 font-semibold rounded-lg hover:bg-amber-500 hover:text-amber-950 transition-all"
+              >
+                ⚙️ Admin
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive font-semibold rounded-lg hover:bg-destructive hover:text-destructive-foreground transition-all"
+              >
+                <LogOut className="w-4 h-4" />
+                Logout
+              </button>
+            </>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
