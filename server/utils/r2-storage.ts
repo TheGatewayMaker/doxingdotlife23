@@ -63,10 +63,25 @@ export const getMediaUrl = (key: string): string => {
   const publicUrl = process.env.R2_PUBLIC_URL;
 
   if (!publicUrl) {
-    throw new Error("Missing R2_PUBLIC_URL");
+    console.warn(
+      "R2_PUBLIC_URL not set. Media files may not load properly. Please set R2_PUBLIC_URL in your environment variables.",
+    );
   }
 
-  return `${publicUrl}/${key}`;
+  if (publicUrl) {
+    return `${publicUrl}/${key}`;
+  }
+
+  const accountId = process.env.R2_ACCOUNT_ID;
+  const bucketName = process.env.R2_BUCKET_NAME;
+
+  if (!accountId || !bucketName) {
+    throw new Error(
+      "Missing R2_PUBLIC_URL and cannot construct URL without R2_ACCOUNT_ID and R2_BUCKET_NAME",
+    );
+  }
+
+  return `https://${bucketName}.${accountId}.r2.cloudflarestorage.com/${key}`;
 };
 
 export const uploadMediaFile = async (
