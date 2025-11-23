@@ -614,8 +614,9 @@ export default function Index() {
                         setServerSearch("");
                       }}
                       className="absolute top-3 right-3 text-accent hover:text-accent/80 transition-colors"
+                      title="Clear selection"
                     >
-                      ✕
+                      <CloseIcon className="w-4 h-4" />
                     </button>
                   )}
                 </div>
