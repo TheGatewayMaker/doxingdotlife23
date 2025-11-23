@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Share2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import MediaViewer from "@/components/MediaViewer";
+import SimpleMediaGallery from "@/components/SimpleMediaGallery";
 import { Post } from "@shared/api";
 import { GlobeIcon, MapPinIcon, ServerIcon } from "@/components/Icons";
 
