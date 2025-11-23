@@ -76,10 +76,24 @@ export default function UppostPanel() {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      if (auth.token) {
+        await fetch("/api/auth/logout", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+
     setAuth({
       isAuthenticated: false,
       username: "",
+      token: null,
     });
     resetForm();
   };
