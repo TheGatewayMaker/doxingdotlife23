@@ -173,20 +173,33 @@ export default function PostDetail() {
                             }}
                           />
                         ) : file.type.startsWith("video/") ? (
-                          <div className="relative w-full h-64 bg-muted flex items-center justify-center">
+                          <div className="relative w-full h-64 bg-muted flex items-center justify-center overflow-hidden">
                             <video
                               controls
+                              controlsList="nodownload"
                               preload="metadata"
                               crossOrigin="anonymous"
-                              className="w-full h-full"
-                              style={{ maxHeight: "256px" }}
+                              className="w-full h-full object-contain"
                               onError={(e) => {
-                                console.error("Video error:", e);
+                                console.error("Video error for", file.name, ":", e);
+                                const videoElement = e.target as HTMLVideoElement;
+                                videoElement.style.display = "none";
+                                const parent = videoElement.parentElement;
+                                if (parent) {
+                                  const errorDiv = document.createElement("div");
+                                  errorDiv.className = "w-full h-64 bg-muted flex flex-col items-center justify-center gap-4 p-4";
+                                  errorDiv.innerHTML = `
+                                    <div class="text-center">
+                                      <p class="text-muted-foreground text-sm mb-2">Video format not supported</p>
+                                      <a href="${file.url}" download="${file.name}" class="text-accent hover:underline text-sm">Download video</a>
+                                    </div>
+                                  `;
+                                  parent.appendChild(errorDiv);
+                                }
                               }}
                             >
                               <source src={file.url} type={file.type} />
-                              <source src={file.url} type="video/mp4" />
-                              <p className="p-4 text-muted-foreground text-center">
+                              <p className="p-4 text-muted-foreground text-center text-sm">
                                 Video format not supported in your browser.{" "}
                                 <a
                                   href={file.url}
