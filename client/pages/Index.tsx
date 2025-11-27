@@ -665,7 +665,11 @@ export default function Index() {
                   <div
                     key={post.id}
                     onClick={() => navigate(`/post/${post.id}`)}
-                    className="group bg-slate-800 border border-slate-700 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer hover:-translate-y-1 animate-fadeIn"
+                    className={`group rounded-xl overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-1 animate-fadeIn ${
+                      post.nsfw
+                        ? "bg-gradient-to-br from-red-900 to-red-800 border border-red-600 hover:border-red-500 hover:shadow-xl hover:shadow-red-600/30"
+                        : "bg-slate-800 border border-slate-700 hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/20"
+                    }`}
                     style={{ animationDelay: `${idx * 0.05}s` }}
                   >
                     {post.thumbnail && (
@@ -705,19 +709,31 @@ export default function Index() {
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {post.country && (
-                          <span className="inline-flex items-center gap-1 bg-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                          <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${
+                            post.nsfw
+                              ? "bg-red-600/30 text-red-200"
+                              : "bg-blue-600/20 text-blue-300"
+                          }`}>
                             <GlobeIcon className="w-3 h-3" />
                             {post.country}
                           </span>
                         )}
                         {post.city && (
-                          <span className="inline-flex items-center gap-1 bg-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                          <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${
+                            post.nsfw
+                              ? "bg-red-600/30 text-red-200"
+                              : "bg-blue-600/20 text-blue-300"
+                          }`}>
                             <MapPinIcon className="w-3 h-3" />
                             {post.city}
                           </span>
                         )}
                         {post.server && (
-                          <span className="inline-flex items-center gap-1 bg-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                          <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${
+                            post.nsfw
+                              ? "bg-red-600/30 text-red-200"
+                              : "bg-blue-600/20 text-blue-300"
+                          }`}>
                             <ServerIcon className="w-3 h-3" />
                             {post.server}
                           </span>
