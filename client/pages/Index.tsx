@@ -497,7 +497,7 @@ export default function Index() {
                     style={{ animationDelay: `${idx * 0.05}s` }}
                   >
                     {post.thumbnail && (
-                      <div className="w-full h-40 sm:h-48 bg-gray-700 overflow-hidden flex items-center justify-center relative">
+                      <div className="w-full h-40 sm:h-48 bg-[#666666] overflow-hidden flex items-center justify-center relative">
                         <img
                           src={post.thumbnail}
                           alt={post.title}
