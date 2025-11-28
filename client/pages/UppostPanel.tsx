@@ -237,8 +237,14 @@ export default function UppostPanel() {
 
               <div className="space-y-5">
                 <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="text-sm text-blue-900 font-medium mb-4">
-                    📧{" "}
+                  <p className="text-sm text-blue-900 font-medium mb-4 flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-blue-600"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
                     <strong>
                       Only authorized Gmail accounts can access this admin panel
                     </strong>
@@ -250,8 +256,15 @@ export default function UppostPanel() {
                 </div>
 
                 {loginError && (
-                  <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm font-medium animate-fadeIn">
-                    ⚠️ {loginError}
+                  <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm font-medium animate-fadeIn flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    {loginError}
                   </div>
                 )}
 
@@ -322,7 +335,7 @@ export default function UppostPanel() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <form
             onSubmit={handleUpload}
-            className="bg-card border border-border rounded-xl p-6 sm:p-8 md:p-10 space-y-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 animate-fadeIn"
+            className="bg-gradient-to-br from-card via-card to-card/90 border border-border/50 rounded-2xl p-6 sm:p-8 md:p-12 space-y-8 shadow-2xl hover:shadow-3xl transition-all duration-300 animate-fadeIn backdrop-blur-sm"
             style={{ animationDelay: "0.2s" }}
           >
             {/* Title */}
@@ -330,13 +343,15 @@ export default function UppostPanel() {
               <label className="block text-sm font-bold mb-3 text-foreground">
                 Post Title <span className="text-destructive">*</span>
               </label>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-3 bg-background border border-border hover:border-accent/50 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors"
-                placeholder="Enter post title"
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="w-full px-4 py-3 bg-background/50 border-2 border-border/60 hover:border-accent/60 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200"
+                  placeholder="Enter post title"
+                />
+              </div>
             </div>
 
             {/* Description */}
@@ -344,13 +359,15 @@ export default function UppostPanel() {
               <label className="block text-sm font-bold mb-3 text-foreground">
                 Description <span className="text-destructive">*</span>
               </label>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="w-full px-4 py-3 bg-background border border-border hover:border-accent/50 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent resize-none transition-all"
-                rows={5}
-                placeholder="Enter post description"
-              />
+              <div className="relative">
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="w-full px-4 py-3 bg-background/50 border-2 border-border/60 hover:border-accent/60 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent resize-none transition-all duration-200"
+                  rows={5}
+                  placeholder="Enter post description"
+                />
+              </div>
             </div>
 
             {/* Thumbnail Upload */}
@@ -358,7 +375,7 @@ export default function UppostPanel() {
               <label className="block text-sm font-bold mb-3 text-foreground">
                 Thumbnail Image <span className="text-destructive">*</span>
               </label>
-              <div className="border-2 border-dashed border-border rounded-xl p-8 text-center cursor-pointer hover:border-accent hover:bg-accent/5 transition-all">
+              <div className="border-2 border-dashed border-border/70 rounded-2xl p-8 text-center cursor-pointer hover:border-accent/70 hover:bg-accent/10 bg-background/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10">
                 <input
                   type="file"
                   onChange={handleThumbnailChange}
@@ -425,68 +442,118 @@ export default function UppostPanel() {
             </div>
 
             {/* Location Info */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Country */}
-              <div>
-                <label className="block text-sm font-bold mb-3 text-foreground">
-                  🌍 Country
-                </label>
-                <input
-                  type="text"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  className="w-full px-4 py-3 bg-background border border-border hover:border-accent/50 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all"
-                  placeholder="(optional)"
-                />
-              </div>
+            <div className="bg-gradient-to-br from-background/40 to-background/20 border border-border/40 rounded-2xl p-6 md:p-8">
+              <h3 className="text-sm font-bold text-foreground mb-6 uppercase tracking-wider opacity-75">
+                Location Information (Optional)
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Country */}
+                <div>
+                  <label className="block text-sm font-bold mb-3 text-foreground flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-accent"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      <path d="M2 12h20" />
+                    </svg>
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="w-full px-4 py-3 bg-background/50 border-2 border-border/60 hover:border-accent/60 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200"
+                    placeholder="(optional)"
+                  />
+                </div>
 
-              {/* City */}
-              <div>
-                <label className="block text-sm font-bold mb-3 text-foreground">
-                  🏙️ City
-                </label>
-                <input
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-4 py-3 bg-background border border-border hover:border-accent/50 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all"
-                  placeholder="(optional)"
-                />
-              </div>
+                {/* City */}
+                <div>
+                  <label className="block text-sm font-bold mb-3 text-foreground flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-accent"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    City
+                  </label>
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="w-full px-4 py-3 bg-background/50 border-2 border-border/60 hover:border-accent/60 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200"
+                    placeholder="(optional)"
+                  />
+                </div>
 
-              {/* Server */}
-              <div>
-                <label className="block text-sm font-bold mb-3 text-foreground">
-                  🖥️ Server Name
-                </label>
-                <input
-                  type="text"
-                  value={server}
-                  onChange={(e) => setServer(e.target.value)}
-                  className="w-full px-4 py-3 bg-background border border-border hover:border-accent/50 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all"
-                  placeholder="(optional)"
-                />
+                {/* Server */}
+                <div>
+                  <label className="block text-sm font-bold mb-3 text-foreground flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-accent"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect x="2" y="2" width="20" height="8" />
+                      <rect x="2" y="14" width="20" height="8" />
+                      <line x1="6" y1="6" x2="6" y2="6.01" />
+                      <line x1="6" y1="18" x2="6" y2="18.01" />
+                    </svg>
+                    Server Name
+                  </label>
+                  <input
+                    type="text"
+                    value={server}
+                    onChange={(e) => setServer(e.target.value)}
+                    className="w-full px-4 py-3 bg-background/50 border-2 border-border/60 hover:border-accent/60 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200"
+                    placeholder="(optional)"
+                  />
+                </div>
               </div>
             </div>
 
             {/* NSFW Checkbox */}
-            <div className="flex items-center gap-3 bg-red-900/20 border border-red-600/50 rounded-lg p-4">
-              <input
-                type="checkbox"
-                id="nsfw-checkbox"
-                checked={nsfw}
-                onChange={(e) => setNsfw(e.target.checked)}
-                className="w-5 h-5 accent-red-600 rounded cursor-pointer"
-              />
-              <label htmlFor="nsfw-checkbox" className="flex-1 cursor-pointer">
-                <p className="text-sm font-bold text-red-400 mb-1">
-                  ⚠️ Mark as NSFW
-                </p>
-                <p className="text-xs text-red-300">
-                  This content is Not Safe For Work and requires age
-                  verification
-                </p>
-              </label>
+            <div className="relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 to-red-900/5 rounded-2xl" />
+              <div className="relative flex items-center gap-3 bg-red-900/15 border-2 border-red-600/40 hover:border-red-600/60 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-red-600/10">
+                <input
+                  type="checkbox"
+                  id="nsfw-checkbox"
+                  checked={nsfw}
+                  onChange={(e) => setNsfw(e.target.checked)}
+                  className="w-5 h-5 accent-red-600 rounded cursor-pointer flex-shrink-0"
+                />
+                <label
+                  htmlFor="nsfw-checkbox"
+                  className="flex-1 cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <svg
+                      className="w-4 h-4 text-red-400 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    <p className="text-sm font-bold text-red-400">
+                      Mark as NSFW Content
+                    </p>
+                  </div>
+                  <p className="text-xs text-red-300/80 ml-6">
+                    This content is Not Safe For Work and requires age
+                    verification
+                  </p>
+                </label>
+              </div>
             </div>
 
             {/* Media Upload */}
@@ -494,7 +561,7 @@ export default function UppostPanel() {
               <label className="block text-sm font-bold mb-3 text-foreground">
                 Media Files <span className="text-destructive">*</span>
               </label>
-              <div className="border-2 border-dashed border-border rounded-xl p-10 text-center cursor-pointer hover:border-accent hover:bg-accent/5 transition-all">
+              <div className="border-2 border-dashed border-border/70 rounded-2xl p-10 text-center cursor-pointer hover:border-accent/70 hover:bg-accent/10 bg-background/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10">
                 <input
                   type="file"
                   onChange={handleMediaChange}
@@ -579,20 +646,34 @@ export default function UppostPanel() {
 
             {uploadMessage && (
               <div className="p-4 bg-green-900/20 border border-green-600/50 rounded-lg text-green-400 text-sm font-medium flex items-center gap-2 animate-fadeIn">
-                <span>✓</span> {uploadMessage}
+                <svg
+                  className="w-4 h-4 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                {uploadMessage}
               </div>
             )}
 
             {uploadError && (
               <div className="p-4 bg-destructive/10 border border-destructive/50 rounded-lg text-destructive text-sm font-medium flex items-center gap-2 animate-fadeIn">
-                <span>⚠️</span> {uploadError}
+                <svg
+                  className="w-4 h-4 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                </svg>
+                {uploadError}
               </div>
             )}
 
             <button
               type="submit"
               disabled={uploading}
-              className="w-full px-4 py-4 bg-accent text-accent-foreground font-bold rounded-lg hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+              className="w-full px-4 py-4 bg-gradient-to-r from-accent to-accent/90 text-accent-foreground font-bold rounded-xl hover:shadow-2xl hover:shadow-accent/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95 shadow-lg flex items-center justify-center gap-2"
             >
               <UploadIcon className="w-5 h-5" />
               {uploading ? "Uploading..." : "Upload Post"}

@@ -253,7 +253,15 @@ export default function AdminPanel() {
         <main className="flex-1 w-full flex items-center justify-center px-4">
           <div className="text-center max-w-md">
             <div className="mb-6">
-              <div className="text-6xl mb-4">🔒</div>
+              <div className="text-6xl mb-4">
+                <svg
+                  className="w-16 h-16 mx-auto text-accent"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M18 8h-1V6c0-2.76-2.24-5-5-5s-5 2.24-5 5v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                </svg>
+              </div>
               <h1 className="text-3xl font-bold mb-2">Access Denied</h1>
               <p className="text-muted-foreground mb-6">
                 You need to be logged in to access the admin panel.
@@ -299,23 +307,23 @@ export default function AdminPanel() {
                 placeholder="Search posts by title, description, or ID..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 sm:px-5 py-3 sm:py-3.5 bg-card border-2 border-border hover:border-accent/50 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm sm:text-base transition-all shadow-md hover:shadow-lg"
+                className="w-full px-4 sm:px-5 py-3 sm:py-3.5 bg-card/50 border-2 border-border/60 hover:border-accent/60 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent text-sm sm:text-base transition-all shadow-lg hover:shadow-2xl hover:shadow-accent/20"
               />
               <SearchIcon className="absolute right-4 sm:right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
             </div>
 
             {/* Filter Section */}
             <div
-              className="mb-0 animate-fadeIn"
+              className="bg-gradient-to-br from-card/40 to-card/20 border border-border/40 rounded-2xl p-6 mb-0 animate-fadeIn"
               style={{ animationDelay: "0.3s" }}
             >
-              <div className="flex items-center gap-2 mb-5">
+              <div className="flex items-center gap-2 mb-6">
                 <FilterIcon className="w-4 h-4 text-accent" />
                 <h3 className="text-xs font-black text-foreground uppercase tracking-widest">
                   Filter by Category
                 </h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* Country Dropdown */}
                 <div className="relative group">
                   <label className="text-sm font-bold text-foreground block mb-3 flex items-center gap-2">
@@ -329,7 +337,7 @@ export default function AdminPanel() {
                     }
                     value={countrySearch}
                     onChange={(e) => setCountrySearch(e.target.value)}
-                    className="w-full px-4 py-3 bg-card border border-border hover:border-accent/50 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm transition-all shadow-sm hover:shadow-md"
+                    className="w-full px-4 py-3 bg-background/50 border-2 border-border/60 hover:border-accent/60 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent text-sm transition-all shadow-md hover:shadow-lg hover:shadow-accent/20"
                   />
                   {countrySearch && (
                     <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg z-50 max-h-48 overflow-y-auto shadow-lg">
@@ -431,7 +439,7 @@ export default function AdminPanel() {
                   <button
                     onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
-                    className="px-3 sm:px-4 py-2 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg active:scale-95 text-sm sm:text-base"
+                    className="px-3 sm:px-4 py-2 bg-gradient-to-r from-accent to-accent/90 text-accent-foreground font-medium rounded-xl hover:shadow-lg hover:shadow-accent/40 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md active:scale-95 text-sm sm:text-base"
                   >
                     ← Prev
                   </button>
@@ -444,8 +452,8 @@ export default function AdminPanel() {
                           className={cn(
                             "w-9 h-9 sm:w-10 sm:h-10 rounded-lg font-medium transition-all text-xs sm:text-sm shadow-sm hover:shadow-md",
                             currentPage === page
-                              ? "bg-accent text-accent-foreground"
-                              : "bg-card border border-border hover:border-accent text-foreground",
+                              ? "bg-gradient-to-r from-accent to-accent/90 text-accent-foreground shadow-lg"
+                              : "bg-card/60 border-2 border-border/60 hover:border-accent/60 text-foreground hover:shadow-lg hover:shadow-accent/10",
                           )}
                         >
                           {page}
@@ -458,7 +466,7 @@ export default function AdminPanel() {
                       setCurrentPage(Math.min(totalPages, currentPage + 1))
                     }
                     disabled={currentPage === totalPages}
-                    className="px-3 sm:px-4 py-2 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg active:scale-95 text-sm sm:text-base"
+                    className="px-3 sm:px-4 py-2 bg-gradient-to-r from-accent to-accent/90 text-accent-foreground font-medium rounded-xl hover:shadow-lg hover:shadow-accent/40 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md active:scale-95 text-sm sm:text-base"
                   >
                     Next →
                   </button>
@@ -477,12 +485,29 @@ export default function AdminPanel() {
 
       {/* Delete Confirmation Modal */}
       {deletingPostId && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-fadeIn">
-          <div className="bg-card border border-border rounded-xl max-w-sm w-full p-6 shadow-xl animate-fadeIn">
-            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">
-              Delete Post?
-            </h3>
-            <p className="text-sm text-muted-foreground mb-6">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div className="bg-gradient-to-br from-card to-card/95 border-2 border-border/40 rounded-2xl max-w-sm w-full p-8 shadow-2xl animate-fadeIn">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-xl bg-red-100 dark:bg-red-900/30">
+                <svg
+                  className="h-6 w-6 text-red-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                Delete Post?
+              </h3>
+            </div>
+            <p className="text-sm text-muted-foreground mb-6 ml-15">
               Are you sure you want to delete this post? This action cannot be
               undone.
             </p>
@@ -490,14 +515,14 @@ export default function AdminPanel() {
               <button
                 onClick={() => setDeletingPostId(null)}
                 disabled={isDeletingPost}
-                className="flex-1 px-4 py-2 bg-card border border-border text-foreground font-medium rounded-lg hover:bg-muted disabled:opacity-40 transition-all"
+                className="flex-1 px-4 py-2 bg-card/60 border-2 border-border/60 text-foreground font-medium rounded-xl hover:bg-muted/60 hover:border-border/80 disabled:opacity-40 transition-all"
               >
                 Cancel
               </button>
               <button
                 onClick={confirmDeletePost}
                 disabled={isDeletingPost}
-                className="flex-1 px-4 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 disabled:opacity-40 transition-all flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-red-600/40 disabled:opacity-40 transition-all flex items-center justify-center gap-2"
               >
                 <TrashIcon className="w-4 h-4" />
                 {isDeletingPost ? "Deleting..." : "Delete"}

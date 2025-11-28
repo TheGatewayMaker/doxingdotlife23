@@ -451,7 +451,7 @@ export default function Index() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="animate-fadeIn" style={{ animationDelay: "0.1s" }}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 text-white tracking-tighter leading-tight">
-                🔍 Doxing Dot Life
+                Doxing Dot Life
               </h1>
               <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-400 mb-6 max-w-2xl">
                 Find if you or someone you know have been Doxed
@@ -480,7 +480,7 @@ export default function Index() {
               {showSearchSuggestions &&
                 searchQuery &&
                 searchSuggestions.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-50 max-h-64 overflow-y-auto shadow-lg">
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-[100] max-h-64 overflow-y-auto shadow-xl shadow-blue-500/20">
                     {searchSuggestions.map((post) => (
                       <button
                         key={post.id}
@@ -500,7 +500,14 @@ export default function Index() {
                         </div>
                         {post.nsfw && (
                           <span className="inline-flex items-center gap-1 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold flex-shrink-0 whitespace-nowrap">
-                            ⚠️ NSFW
+                            <svg
+                              className="w-3 h-3"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                            </svg>
+                            NSFW
                           </span>
                         )}
                       </button>
@@ -531,7 +538,7 @@ export default function Index() {
                     className="w-full px-4 py-3 bg-slate-800 border border-slate-700 hover:border-blue-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm transition-all shadow-sm hover:shadow-md hover:shadow-blue-500/20"
                   />
                   {countrySearch && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-50 max-h-48 overflow-y-auto shadow-lg">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-40 max-h-48 overflow-y-auto shadow-lg">
                       {filteredCountries.length > 0 ? (
                         filteredCountries.map((country) => (
                           <button
@@ -582,7 +589,7 @@ export default function Index() {
                     className="w-full px-4 py-3 bg-slate-800 border border-slate-700 hover:border-blue-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm transition-all shadow-sm hover:shadow-md hover:shadow-blue-500/20"
                   />
                   {citySearch && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-50 max-h-48 overflow-y-auto shadow-lg">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-40 max-h-48 overflow-y-auto shadow-lg">
                       {availableCities.length > 0 ? (
                         availableCities.map((city) => (
                           <button
@@ -633,7 +640,7 @@ export default function Index() {
                     className="w-full px-4 py-3 bg-slate-800 border border-slate-700 hover:border-blue-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm transition-all shadow-sm hover:shadow-md hover:shadow-blue-500/20"
                   />
                   {serverSearch && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-50 max-h-48 overflow-y-auto shadow-lg">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg z-40 max-h-48 overflow-y-auto shadow-lg">
                       {filteredServers.length > 0 ? (
                         filteredServers.map((server) => (
                           <button
@@ -701,7 +708,11 @@ export default function Index() {
             ) : (
               <>
                 <div className="flex items-center gap-3">
-                  <FireIcon className="w-8 h-8 text-yellow-500" />
+                  <div className="w-8 h-8 text-orange-500">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 1C11.4 1 11 1.4 11 2V12C11 12.6 11.4 13 12 13C12.6 13 13 12.6 13 12V2C13 1.4 12.6 1 12 1ZM15.8 5.3C15.3 4.9 14.5 5 14.1 5.5L11.5 9.4C11.2 9.8 11.2 10.4 11.5 10.8C11.8 11.2 12.3 11.4 12.8 11.2L16.6 8.6C17.1 8.3 17.2 7.5 16.8 7C16.5 6.5 15.9 6.1 15.8 5.3ZM19.2 8.2C19 7.6 18.4 7.2 17.8 7.4C17.2 7.6 16.8 8.2 17 8.8L20 15.4C20.2 16 20.8 16.4 21.4 16.2C22 16 22.4 15.4 22.2 14.8L19.2 8.2ZM8.2 5.3C8.1 6.1 7.5 6.5 7.2 7C6.8 7.5 6.9 8.3 7.4 8.6L11.2 11.2C11.7 11.4 12.2 11.2 12.5 10.8C12.8 10.4 12.8 9.8 12.5 9.4L9.9 5.5C9.5 5 8.7 4.9 8.2 5.3Z" />
+                    </svg>
+                  </div>
                   <h2 className="text-5xl md:text-6xl font-black text-white">
                     Hot & Recent Posts
                   </h2>
@@ -769,7 +780,14 @@ export default function Index() {
                         </h3>
                         {post.nsfw && (
                           <span className="inline-flex items-center gap-1 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold flex-shrink-0">
-                            ⚠️ NSFW
+                            <svg
+                              className="w-3 h-3"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                            </svg>
+                            NSFW
                           </span>
                         )}
                       </div>
