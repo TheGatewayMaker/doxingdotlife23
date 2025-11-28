@@ -125,7 +125,7 @@ export default function PostDetail() {
           {/* Back Button */}
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 px-4 py-2 mb-8 text-accent hover:text-accent/80 transition-colors font-medium animate-fadeIn hover:scale-105 active:scale-95"
+            className="flex items-center gap-2 px-4 py-2 mb-8 text-muted-foreground hover:text-foreground transition-colors font-medium animate-fadeIn"
           >
             <svg
               className="w-5 h-5"
