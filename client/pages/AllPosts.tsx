@@ -301,7 +301,7 @@ export default function AllPosts() {
 
       <main className="flex-1 w-full">
         {/* Hero Section */}
-        <div className="bg-gradient-to-br from-slate-800 via-slate-900 to-slate-900 pt-8 pb-8 md:pt-16 md:pb-12 border-b border-slate-700">
+        <div className="bg-gradient-to-b from-[#1a1a1a]/80 to-transparent pt-8 pb-8 md:pt-16 md:pb-12 border-b border-[#666666]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="animate-fadeIn" style={{ animationDelay: "0.1s" }}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 text-white tracking-tighter leading-tight">
